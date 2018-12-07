@@ -184,9 +184,16 @@ vmlist:
     data_disks:
       - size: 128
       
-  - name: mapping-tu
+  - name: http-tu
     resource_group_name: cif-conv-tu
     vm_size: "Standard_D2_v2"
+    private_ip_address: "172.16.20.17"
+    data_disks:
+      - size: 128   
+      
+  - name: mapping-tu
+    resource_group_name: cif-conv-tu
+    vm_size: "Standard_D11_v2"
     private_ip_address: "172.16.20.16"
     data_disks:
       - size: 128
@@ -272,7 +279,7 @@ vmlist:
       
   - name: bal-rt
     resource_group_name: cif-conv-rt
-    vm_size: "Standard_D11_v2"
+    vm_size: "Standard_D1_v2"
     private_ip_address: "172.16.30.21"
     data_disks:
       - size: 128
@@ -325,7 +332,7 @@ vmlist:
         
   - name: bpm-rf
     resource_group_name: cif-conv-rf
-    vm_size: "Standard_D3_v2"
+    vm_size: "Standard_D2_v2"
     private_ip_address: "172.16.40.14"
     data_disks:
       - size: 128
@@ -519,7 +526,7 @@ vmlist:
         
   - name: arabsdbb-homolog
     resource_group_name: cif-conv-homolog
-    vm_size: "Standard_D8_v3"
+    vm_size: "Standard_E8_v3"
     os_disk_managed_disk_type: "StandardSSD_LRS"
     private_ip_address: "172.16.50.26"
     data_disks:
