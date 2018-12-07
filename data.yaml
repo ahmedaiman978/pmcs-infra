@@ -320,7 +320,7 @@ vmlist:
         
   - name: bpm-rf
     resource_group_name: cif-conv-rf
-    vm_size: "Standard_D3_v2"
+    vm_size: "Standard_D2_v2"
     private_ip_address: "172.16.40.14"
     data_disks:
       - size: 128
