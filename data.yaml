@@ -32,16 +32,28 @@ global:
   vpn_subnet_address_prefix: "172.16.100.0/24" 
   vpn_client_address_space: "10.13.13.0/24"
 
-vpns2s:
-  - name: cif
-    gateway_address: 196.179.246.41
-    address_space: 10.10.21.0/24
-    shared_key:
-    
 avsets: 
   - name: dc
     resource_group: mgmt    
     
+vpns2s:
+  - name: adactim
+    gateway_address: 196.179.246.41
+    address_space:
+      - "10.10.21.0/24"
+    shared_key: "${var.s2s_psk}"
+  - name: sabnor
+    gateway_address: 194.250.8.164
+    address_space:
+      - "10.137.162.0/24"
+      - "194.250.8.167/32"
+    shared_key: "${var.s2s_psk}"
+  - name: sabsec
+    gateway_address: 185.84.112.142
+    address_space:
+      - "10.152.162.0/24"
+      - "185.84.112.145/32"
+    shared_key: "${var.s2s_psk}"
 
 # Assumes every env, gets one RG, one subnet and one NSG
 environments:
@@ -125,7 +137,7 @@ vmlist:
     resource_group_name: cif-conv-coffre
     vm_size   : "Standard_D2_v2" 
     private_ip_address: "172.16.10.16"
-     data_disks:
+    data_disks:
       - size: 128
       
   - name: bdd-tu
@@ -723,6 +735,7 @@ vmlist:
     vm_size: "Standard_A2_v2"
     private_ip_address: "172.16.90.10"
     os: windows2016
+    avset: dc
     extension:
       name: winrm
       fileUris: "[\"https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1\"]"
@@ -733,6 +746,7 @@ vmlist:
     vm_size: "Standard_A2_v2"
     private_ip_address: "172.16.90.11"
     os: windows2016
+    avset: dc
     extension:
       name: winrm
       fileUris: "[\"https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1\"]"

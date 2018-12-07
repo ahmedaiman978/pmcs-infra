@@ -23,7 +23,7 @@ resource "azurerm_storage_account" "productiondontdelete" {
 
 resource "azurerm_storage_container" "tfstate" {
   name                  = "tfstate"
-  resource_group_name      = "${azurerm_resource_group.{{ global.mgmt_env_name }}.name}"
+  resource_group_name      = "c9cloudshell"
   storage_account_name  = "${azurerm_storage_account.productiondontdelete.name}"
   container_access_type = "private"
 }

@@ -65,7 +65,8 @@ resource "azurerm_local_network_gateway" "{{ v.name }}" {
   location            = "{{ global.location }}"
   resource_group_name = "${azurerm_resource_group.{{ global.mgmt_env_name }}.name}"
   gateway_address     = "{{ v.gateway_address }}"
-  address_space       = [ "{{ v.address_space }}" ]
+  address_space       = [{% for a in v.address_space %}"{{a}}"{% if not loop.last %}, {% endif %}{% endfor %}]
+
 }
 
 resource "azurerm_virtual_network_gateway_connection" "{{ v.name }}" {
@@ -75,7 +76,7 @@ resource "azurerm_virtual_network_gateway_connection" "{{ v.name }}" {
   type                       = "IPsec"
   virtual_network_gateway_id = "${azurerm_virtual_network_gateway.cifvpn.id}"
   local_network_gateway_id   = "${azurerm_local_network_gateway.{{ v.name }}.id}"
-  shared_key = "${var.s2s_psk}"
+  shared_key = "{{ v.shared_key }}"
 }
 {% endfor %}
 
