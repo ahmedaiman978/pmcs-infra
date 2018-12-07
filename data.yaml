@@ -358,6 +358,10 @@ vmlist:
     private_ip_address: "172.16.40.17"
     data_disks:
       - size: 512
+    extension:
+      name: winrm
+      fileUris: "[\"https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1\"]"
+      commandToExecute: "powershell.exe -ExecutionPolicy Unrestricted -File ConfigureRemotingForAnsible.ps1 -Verbose -EnableCredSSP"
        
   - name: ypcfront-rf
     resource_group_name: cif-conv-rf
@@ -391,6 +395,10 @@ vmlist:
     data_disks:
       - size: 256
         storage_account_type: "StandardSSD_LRS"
+    extension:
+      name: winrm
+      fileUris: "[\"https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1\"]"
+      commandToExecute: "powershell.exe -ExecutionPolicy Unrestricted -File ConfigureRemotingForAnsible.ps1 -Verbose -EnableCredSSP"
         
   - name: arabsapp-rf
     resource_group_name: cif-conv-rf
@@ -483,6 +491,10 @@ vmlist:
     private_ip_address: "172.16.50.20"
     data_disks:
       - size: 2048
+    extension:
+      name: winrm
+      fileUris: "[\"https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1\"]"
+      commandToExecute: "powershell.exe -ExecutionPolicy Unrestricted -File ConfigureRemotingForAnsible.ps1 -Verbose -EnableCredSSP"
       
   - name: ypcfront-homolog
     resource_group_name: cif-conv-homolog
@@ -516,6 +528,10 @@ vmlist:
     data_disks:
       - size: 512
         storage_account_type: "StandardSSD_LRS"
+    extension:
+      name: winrm
+      fileUris: "[\"https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1\"]"
+      commandToExecute: "powershell.exe -ExecutionPolicy Unrestricted -File ConfigureRemotingForAnsible.ps1 -Verbose -EnableCredSSP"
         
   - name: arabsapp-homolog
     resource_group_name: cif-conv-homolog
@@ -707,6 +723,10 @@ vmlist:
     private_ip_address: "172.16.80.19"
     data_disks:
       - size: 2048
+    extension:
+      name: winrm
+      fileUris: "[\"https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1\"]"
+      commandToExecute: "powershell.exe -ExecutionPolicy Unrestricted -File ConfigureRemotingForAnsible.ps1 -Verbose -EnableCredSSP"
 
   - name: ypcfront-islam-homolog
     resource_group_name: cif-islam-homolog
@@ -736,12 +756,17 @@ vmlist:
     private_ip_address: "172.16.80.23"
     data_disks:
       - size: 512
+    extension:
+      name: winrm
+      fileUris: "[\"https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1\"]"
+      commandToExecute: "powershell.exe -ExecutionPolicy Unrestricted -File ConfigureRemotingForAnsible.ps1 -Verbose -EnableCredSSP"
 
   - name: dc01
     resource_group_name: mgmt
-    vm_size: "Standard_A2_v2"
+    vm_size: "Standard_D2s_v3"
     private_ip_address: "172.16.90.10"
     os: windows2016
+    os_disk_managed_disk_type: StandardSSD_LRS
     avset: dc
     extension:
       name: winrm
@@ -750,9 +775,10 @@ vmlist:
 
   - name: dc02
     resource_group_name: mgmt
-    vm_size: "Standard_A2_v2"
+    vm_size: "Standard_D2s_v3"
     private_ip_address: "172.16.90.11"
     os: windows2016
+    os_disk_managed_disk_type: StandardSSD_LRS
     avset: dc
     extension:
       name: winrm
